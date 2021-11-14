@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SargisKhlopuzyan/AndroidStudioProjects/PL_MVVMRunningApp/app/src/main/res/drawable/ic_directions_run_black_24dp.xml" value="0.3140625" />
         <entry key="..\:/Users/SargisKhlopuzyan/AndroidStudioProjects/PL_MVVMRunningApp/app/src/main/res/layout-land/fragment_statistics.xml" value="0.17195767195767195" />
         <entry key="..\:/Users/SargisKhlopuzyan/AndroidStudioProjects/PL_MVVMRunningApp/app/src/main/res/layout-land/fragment_tracking.xml" value="0.17195767195767195" />
         <entry key="..\:/Users/SargisKhlopuzyan/AndroidStudioProjects/PL_MVVMRunningApp/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
