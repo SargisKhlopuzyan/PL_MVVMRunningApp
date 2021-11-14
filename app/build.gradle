@@ -8,6 +8,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            keyAlias 'key0'
+            storePassword 'HaRKaS198S'
+            keyPassword 'HaRKaS198S'
+            storeFile file('C:\\Users\\SargisKhlopuzyan\\Desktop\\PlayMarket\\FS_AAB\\key.jks')
+        }
+    }
     compileSdk 31
 
     defaultConfig {
