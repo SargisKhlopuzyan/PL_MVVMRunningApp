@@ -40,8 +40,8 @@ typealias Polylines = MutableList<Polyline>
 
 class TrackingService : LifecycleService() {
 
-    var isFirstRun = true
-    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var isFirstRun = true
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     companion object {
         val isTracking = MutableLiveData<Boolean>()
@@ -119,7 +119,6 @@ class TrackingService : LifecycleService() {
                     }
                 }
             }
-
         }
     }
 
