@@ -11,6 +11,9 @@ import android.content.Intent
 import android.location.Location
 import android.os.Build
 import android.os.Looper
+import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
+import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -18,9 +21,6 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.maps.model.LatLng
-import androidx.annotation.RequiresApi
-import androidx.core.app.NotificationCompat
-import androidx.lifecycle.LifecycleService
 import com.sargis.khlopuzyan.pl_mvvmrunningapp.R
 import com.sargis.khlopuzyan.pl_mvvmrunningapp.other.Constants.ACTION_PAUSE_SERVICE
 import com.sargis.khlopuzyan.pl_mvvmrunningapp.other.Constants.ACTION_SHOW_TRACKING_FRAGMENT
@@ -32,9 +32,6 @@ import com.sargis.khlopuzyan.pl_mvvmrunningapp.other.Constants.NOTIFICATION_CHAN
 import com.sargis.khlopuzyan.pl_mvvmrunningapp.other.Constants.NOTIFICATION_CHANNEL_NAME
 import com.sargis.khlopuzyan.pl_mvvmrunningapp.other.Constants.NOTIFICATION_ID
 import com.sargis.khlopuzyan.pl_mvvmrunningapp.other.TrackingUtility
-import com.sargis.khlopuzyan.pl_mvvmrunningapp.other.Constants.NOTIFICATION_CHANNEL_ID
-import com.sargis.khlopuzyan.pl_mvvmrunningapp.other.Constants.NOTIFICATION_CHANNEL_NAME
-import com.sargis.khlopuzyan.pl_mvvmrunningapp.other.Constants.NOTIFICATION_ID
 import com.sargis.khlopuzyan.pl_mvvmrunningapp.ui.MainActivity
 import timber.log.Timber
 
@@ -43,9 +40,8 @@ typealias Polylines = MutableList<Polyline>
 
 class TrackingService : LifecycleService() {
 
-    var isFirstRun = true
-  
-    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var isFirstRun = true
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     companion object {
         val isTracking = MutableLiveData<Boolean>()
@@ -123,7 +119,6 @@ class TrackingService : LifecycleService() {
                     }
                 }
             }
-
         }
     }
 
@@ -150,11 +145,6 @@ class TrackingService : LifecycleService() {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE)
                 as NotificationManager
 
-    private fun startForegroundService() {
-      
-        val notificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-      
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel(notificationManager)
         }
